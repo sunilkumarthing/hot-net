@@ -1,0 +1,16 @@
+os: linux
+
+services:
+ - docker
+
+install:
+ - docker login -u $USERNAME -p $PASSWORD 
+
+script:
+  - docker image build -t $USERNAME/python-app .
+
+deploy:
+  provider: script
+  script: docker push $USERNAME/python-app
+
+
